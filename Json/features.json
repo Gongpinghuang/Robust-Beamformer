@@ -1,0 +1,5 @@
+{    
+	"frame_Size": 128,
+	"hop_Size": 32,
+	"epsilon": 1E-20
+}
