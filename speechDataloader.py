@@ -91,7 +91,7 @@ class SpeechData(Dataset):
             x *= 10.0 ** (snr / 20.0)
 
             # convolve the interference speech with rir for interference source
-            h_v = np.squeeze(hs[iMic, :])
+            h_v = np.squeeze(hs[iMic+nMics, :])
             v = np.convolve(v_speech, h_v, mode='same')
 
             # generate the white noise with 15-40 dB
@@ -108,8 +108,8 @@ class SpeechData(Dataset):
             y_sift = np.expand_dims(y_sift, axis=0)
             Ys.append(y_sift)
 
-            MicPo = np.array(mics[iMic]) - mean_mic
 
+            MicPo = np.array(mics[iMic])
             # normolize the microphone position
             MicPo = np.array([MicPo[0] / room[0], MicPo[1] / room[1]])
             MicPos.append(MicPo)
